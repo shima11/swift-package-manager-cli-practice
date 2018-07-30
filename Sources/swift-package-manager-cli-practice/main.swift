@@ -5,11 +5,22 @@ import Commander
 let hoge = MyTool()
 hoge.hello()
 
-print("arguments:", CommandLine.arguments)
+print("CommandLine.arguments:", CommandLine.arguments)
+
+
 
 let main = command(
+    Argument<Int>("count", description: "loop count"),
     Option("name", default: "hoge"),
     Option("count", default: "0")
-) { name, count in
-    print("name:", name, "count:", count)
+) { count, name, _count in
+    print("count:", count, "name:", name, "count:", _count)
 }
+
+main.run()
+
+let sub = command { (name: String) in
+
+}
+
+sub.run()
